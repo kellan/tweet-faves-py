@@ -1,0 +1,5 @@
+psycopg2==2.7.4
+records==0.5.2
+SQLAlchemy==1.2.7
+tablib==0.12.1
+twitter==1.18.0
