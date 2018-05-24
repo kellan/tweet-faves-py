@@ -19,5 +19,8 @@ CREATE TABLE likes (
 	created_at timestamp,
 	inserted_at timestamp,
 	updated_at timestamp,
+	tweet text,
+	author text,
+	urls text,
 	data text
 );

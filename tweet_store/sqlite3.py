@@ -18,8 +18,14 @@ def __prepare_twitter_row(tweet):
 		'source': 'twitter',
 		'created_at': __tweet_date_to_iso(tweet['created_at']),
 		'inserted_at': None,   # "DATETIME('NOW')",
+		'tweet': tweet.get('full_text') if tweet.get('full_text') else tweet.get('text'),
+
+		'author': '; '.join((tweet['user']['name'], tweet['user']['screen_name'])),
 		'data': json.dumps(tweet)
 	}
+
+	if tweet['entities']['urls']:
+		insert['urls'] = ' '.join(url['expanded_url'] for url in tweet['entities']['urls'])
 
 	return insert
 
@@ -33,11 +39,17 @@ def __insert_sql(table_name, params: Dict):
 	keys = list(params)
 	field_sql = ', '.join(keys)
 
-	values = (':id',':source',":created_at","DATETIME('NOW')", ":data")
+	values = []
+	for key in keys:
+		if key in ['inserted_at']:
+			values.append("DATETIME('NOW')")
+		else:
+			values.append(":{}".format(key))
+
 	values_sql = ','.join(values)
 
 	sql = "INSERT into {} ({}) VALUES ({})".format(table_name, field_sql, values_sql)
-	print(sql)
+	#print(sql)
 	return sql
 
 def __connection__():
