@@ -48,7 +48,7 @@ def __insert_sql(table_name, params: Dict):
 
 	values_sql = ','.join(values)
 
-	sql = "INSERT into {} ({}) VALUES ({})".format(table_name, field_sql, values_sql)
+	sql = "INSERT OR IGNORE into {} ({}) VALUES ({})".format(table_name, field_sql, values_sql)
 	#print(sql)
 	return sql
 
