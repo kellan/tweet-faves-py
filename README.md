@@ -1,5 +1,7 @@
 # tweet-faves-py
 
+download your twitter likes (nee favorites) and stick them into a sqlite db
+
 ## setup config
 
 `cp config.py.SAMPLE config.py`
