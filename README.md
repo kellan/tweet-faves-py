@@ -12,6 +12,10 @@ add your twitter api key and token info to config.py
 
 `sqlite3 likes.db < sql/likes.sql`
 
+## run it
+
+python twitter-faves.py
+
 ## bonus
 
 datasette likes.db see also [datasette](https://github.com/simonw/datasette)
