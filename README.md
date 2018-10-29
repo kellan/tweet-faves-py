@@ -8,6 +8,10 @@ download your twitter likes (nee favorites) and stick them into a sqlite db
 
 add your twitter api key and token info to config.py
 
+## install required libraries
+
+`pip install -r requirements.txt`
+
 ## initialize sqlite database
 
 `sqlite3 likes.db < sql/likes.sql`
